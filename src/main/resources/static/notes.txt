@@ -1,0 +1,6 @@
+Instructor and InstructorDetails are two entity classes representing the two tables in the database.
+@OneToOne annotation is used to define the one-to-one relationship between them.
+CascadeType.ALL ensures that when an Instructor is saved, its associated InstructorDetails are also saved.
+@JoinColumn annotation is used to specify the column in the InstructorDetails table that maps to the primary key of the Instructors table.
+InstructorService and InstructorDetailsService provide methods for saving Instructor and InstructorDetails respectively.
+In the Application class, an example usage demonstrates how to create and save an Instructor along with their InstructorDetails.
