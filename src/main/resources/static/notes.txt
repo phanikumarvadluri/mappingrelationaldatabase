@@ -4,3 +4,15 @@ CascadeType.ALL ensures that when an Instructor is saved, its associated Instruc
 @JoinColumn annotation is used to specify the column in the InstructorDetails table that maps to the primary key of the Instructors table.
 InstructorService and InstructorDetailsService provide methods for saving Instructor and InstructorDetails respectively.
 In the Application class, an example usage demonstrates how to create and save an Instructor along with their InstructorDetails.
+
+
+
+
+
+Employee having multiple projects , project may have multiple employees
+
+Employee  1
+Project   2 "syf loyali",3 "syf cahing"
+employee project
+1 2
+1 3

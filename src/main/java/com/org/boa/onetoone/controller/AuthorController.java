@@ -8,6 +8,9 @@ import com.org.boa.onetoone.model.InstructorDetails;
 import com.org.boa.onetoone.service.AuthorService;
 import com.org.boa.onetoone.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +31,15 @@ public class AuthorController {
     public void save(@RequestBody Author author) {
         authorService.saveAuthor(author);
         List<Book> books = author.getBooks();
-        for (Book book : books) {
-            book.setAuthor(author);
-            bookService.saveBook(book);
-        }
+        books.forEach(x -> {
+            x.setAuthor(author);
+            bookService.saveBook(x);
+        });
+    }
+
+    @GetMapping("/author")
+    public ResponseEntity<List<Author>> getAll() {
+        List<Author> allAuthors = authorService.getAllAuthors();
+        return new ResponseEntity<>(allAuthors, HttpStatus.OK);
     }
 }
